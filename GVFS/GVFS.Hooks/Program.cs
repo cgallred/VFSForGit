@@ -105,7 +105,14 @@ namespace GVFS.Hooks
         {
             return args.Any(arg =>
                 arg.StartsWith("--serialize", StringComparison.OrdinalIgnoreCase)
-                || arg.StartsWith("--porcelain", StringComparison.OrdinalIgnoreCase));
+                || arg.StartsWith("--porcelain", StringComparison.OrdinalIgnoreCase)
+                || arg.Equals("--short", StringComparison.OrdinalIgnoreCase)
+                || HasShortFlag(arg, "s"));
+        }
+
+        private static bool HasShortFlag(string arg, string flag)
+        {
+            return arg.StartsWith("-") && !arg.StartsWith("--") && arg.Substring(1).Contains(flag);
         }
 
         private static bool ConfigurationAllowsHydrationStatus()
