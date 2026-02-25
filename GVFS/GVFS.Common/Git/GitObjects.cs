@@ -210,6 +210,7 @@ namespace GVFS.Common.Git
                         { "Success", result.Succeeded },
                         { "Attempts", result.Attempts },
                         { "BytesDownloaded", bytesDownloaded },
+                        { "LatestPrefetchPackTimestamp", latestTimestamp },
                     });
 
                 return result.Succeeded;
